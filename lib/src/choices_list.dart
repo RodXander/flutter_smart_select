@@ -13,7 +13,7 @@ class SmartSelectChoicesList<T> extends StatelessWidget {
     this.items,
     this.type,
     this.config,
-    { Key key }
+    { Key? key }
   ) : super(key: key);
 
   @override

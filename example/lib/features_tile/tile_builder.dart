@@ -87,7 +87,7 @@ class _FeaturesTileBuilderState extends State<FeaturesTileBuilder> {
                 title: 'Cars',
                 state: state,
                 showChoices: showChoices,
-                onChipsDeleted: (value) {
+                onChipsDeleted: (dynamic value) {
                   setState(() => _cars.remove(value));
                 },
               );
@@ -102,13 +102,13 @@ class _FeaturesTileBuilderState extends State<FeaturesTileBuilder> {
 
 class ChipsTile<T> extends StatelessWidget {
 
-  final String title;
-  final SmartSelectState<T> state;
-  final SmartSelectShowModal showChoices;
-  final Function(T value) onChipsDeleted;
+  final String? title;
+  final SmartSelectState<T>? state;
+  final SmartSelectShowModal? showChoices;
+  final Function(T value)? onChipsDeleted;
 
   ChipsTile({
-    Key key,
+    Key? key,
     this.title,
     this.state,
     this.showChoices,
@@ -130,7 +130,7 @@ class ChipsTile<T> extends StatelessWidget {
             title: Text('Cars'),
             trailing: IconButton(
               icon: Icon(Icons.add_circle_outline),
-              onPressed: () => showChoices(context),
+              onPressed: () => showChoices!(context),
             ),
           ),
           Divider(height: 1),
@@ -141,7 +141,7 @@ class ChipsTile<T> extends StatelessWidget {
   }
 
   Widget get _chips {
-    return state.valuesObject?.isNotEmpty ?? false
+    return state!.valuesObject?.isNotEmpty ?? false
       ? Padding(
           padding: EdgeInsets.symmetric(
             horizontal: 10,
@@ -153,9 +153,9 @@ class ChipsTile<T> extends StatelessWidget {
             spacing: 5,
             runSpacing: 0,
             children: List<Widget>.generate(
-              state.valuesObject.length,
+              state!.valuesObject.length,
               (i) => Chip(
-                label: Text(state.valuesObject[i].title),
+                label: Text(state!.valuesObject[i].title),
                 backgroundColor: Colors.white,
                 shape: StadiumBorder(
                   side: BorderSide(
@@ -163,7 +163,7 @@ class ChipsTile<T> extends StatelessWidget {
                   ),
                 ),
                 onDeleted: () {
-                  onChipsDeleted?.call(state.valuesObject[i].value);
+                  onChipsDeleted?.call(state!.valuesObject[i].value);
                 },
               ),
             ).toList(),
@@ -172,7 +172,7 @@ class ChipsTile<T> extends StatelessWidget {
       : Container(
           padding: EdgeInsets.all(25),
           child: Center(
-            child: Text(state.placeholder),
+            child: Text(state!.placeholder!),
           ),
         );
   }

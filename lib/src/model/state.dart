@@ -1,23 +1,24 @@
 import './option.dart';
+import 'package:collection/collection.dart' show IterableExtension;
 
 /// Expose current of the [SmartSelect] widget
 class SmartSelectState<T> {
 
   /// The primary content of the widget.
   /// Used in trigger widget and header option
-  final String title;
+  final String? title;
 
   /// The current value of the widget.
-  final T value;
+  final T? value;
 
   /// The current value of the widget.
-  final List<T> values;
+  final List<T>? values;
 
   /// List of option along with its configuration
-  final List<SmartSelectOption<T>> options;
+  final List<SmartSelectOption<T>>? options;
 
   /// The text displayed when the value is null
-  final String placeholder;
+  final String? placeholder;
 
   /// Whether show the options list
   /// as single choice or multiple choice
@@ -41,25 +42,25 @@ class SmartSelectState<T> {
 
   /// return an object or array of object
   /// that represent the value
-  SmartSelectOption<T> get valueObject {
-    return options.firstWhere((SmartSelectOption<T> item) => item.value == value, orElse: () => null);
+  SmartSelectOption<T>? get valueObject {
+    return options!.firstWhereOrNull((SmartSelectOption<T> item) => item.value == value);
   }
 
   /// return an object or array of object
   /// that represent the value
   List<SmartSelectOption<T>> get valuesObject {
-    return options.where((SmartSelectOption<T> item) => values?.contains(item.value) ?? false).toList().cast<SmartSelectOption<T>>();
+    return options!.where((SmartSelectOption<T> item) => values?.contains(item.value) ?? false).toList().cast<SmartSelectOption<T>>();
   }
 
   /// return a string or array of string
   /// that represent the value
-  String get valueTitle {
-    return valueObject != null ? valueObject.title : null;
+  String? get valueTitle {
+    return valueObject != null ? valueObject!.title : null;
   }
 
   /// return a string or array of string
   /// that represent the value
-  List<String> get valuesTitle {
+  List<String>? get valuesTitle {
     return valuesObject != null && valuesObject.length > 0
       ? valuesObject.map((SmartSelectOption<T> item) => item.title).toList()
       : null;
@@ -67,10 +68,10 @@ class SmartSelectState<T> {
 
   /// return a string that can be used as display
   /// when value is null it will display placeholder
-  String get valueDisplay {
+  String? get valueDisplay {
     return isMultiChoice == true
       ? valuesTitle != null
-        ? valuesTitle.join(', ') : placeholder
+        ? valuesTitle!.join(', ') : placeholder
       : valueTitle != null
         ? valueTitle : placeholder;
   }

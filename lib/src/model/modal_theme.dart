@@ -6,14 +6,14 @@ class SmartSelectModalStyle {
 
   /// Modal border shape
   /// used in popup dialog and bottom sheet
-  final ShapeBorder shape;
+  final ShapeBorder? shape;
 
   /// Modal elevation
   /// used in popup dialog and bottom sheet
-  final double elevation;
+  final double? elevation;
 
   /// Modal background color
-  final Color backgroundColor;
+  final Color? backgroundColor;
 
   /// Create a configuration of modal style
   const SmartSelectModalStyle({
@@ -27,7 +27,7 @@ class SmartSelectModalStyle {
 class SmartSelectModalHeaderStyle {
 
   /// Header border shape
-  final ShapeBorder shape;
+  final ShapeBorder? shape;
 
   /// Header elevation
   final double elevation;
@@ -36,7 +36,7 @@ class SmartSelectModalHeaderStyle {
   final Color backgroundColor;
 
   /// Header brightness
-  final Brightness brightness;
+  final Brightness? brightness;
 
   /// Whether the header title is centered
   final bool centerTitle;

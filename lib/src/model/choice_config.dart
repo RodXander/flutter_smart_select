@@ -6,7 +6,7 @@ import './choice_theme.dart';
 enum SmartSelectChoiceType { radios, checkboxes, switches, chips }
 
 /// A builder for custom display when choices is empty
-typedef Widget SmartSelectChoiceEmptyBuilder(String query);
+typedef Widget SmartSelectChoiceEmptyBuilder(String? query);
 
 /// A builder for custom choices group header widget
 typedef Widget SmartSelectChoiceGroupHeaderBuilder(
@@ -48,13 +48,13 @@ typedef Widget SmartSelectChoiceWidgetBuilder<T>(
 typedef Widget SmartSelectChoiceBuilder<T>(
   SmartSelectOption<T> item,
   bool checked,
-  SmartSelectChoiceOnSelect<T> onChange
+  SmartSelectChoiceOnSelect<T>? onChange
 );
 
 /// Callback to handle change of each custom choices item
 typedef void SmartSelectChoiceOnSelect<T>(
   T value,
-  bool checked
+  bool? checked
 );
 
 /// Choices configuration
@@ -75,14 +75,14 @@ class SmartSelectChoiceConfig<T> {
 
   /// How much space to place between children in a run in the main axis.
   /// When use [SmartSelectChoiceType.chips] or [useWrap] is [true]
-  final double spacing;
+  final double? spacing;
 
   /// How much space to place between the runs themselves in the cross axis.
   /// When use [SmartSelectChoiceType.chips] or [useWrap] is [true]
-  final double runSpacing;
+  final double? runSpacing;
 
   /// choices wrapper padding
-  final EdgeInsetsGeometry padding;
+  final EdgeInsetsGeometry? padding;
 
   /// Custom color of the glowing indicator
   /// when overscroll the choices list
@@ -95,25 +95,25 @@ class SmartSelectChoiceConfig<T> {
   final SmartSelectChoiceGroupHeaderStyle groupHeaderStyle;
 
   /// Builder for each custom choices item
-  final SmartSelectChoiceBuilder<T> builder;
+  final SmartSelectChoiceBuilder<T>? builder;
 
   /// Builder for each custom choices item subtitle
-  final SmartSelectChoiceWidgetBuilder<T> titleBuilder;
+  final SmartSelectChoiceWidgetBuilder<T>? titleBuilder;
 
   /// Builder for each custom choices item subtitle
-  final SmartSelectChoiceWidgetBuilder<T> subtitleBuilder;
+  final SmartSelectChoiceWidgetBuilder<T>? subtitleBuilder;
 
   /// Builder for each custom choices item secondary
-  final SmartSelectChoiceWidgetBuilder<T> secondaryBuilder;
+  final SmartSelectChoiceWidgetBuilder<T>? secondaryBuilder;
 
   /// Builder for custom divider widget between choices item
-  final IndexedWidgetBuilder dividerBuilder;
+  final IndexedWidgetBuilder? dividerBuilder;
 
   /// Builder for custom choices group header widget
-  final SmartSelectChoiceGroupHeaderBuilder groupHeaderBuilder;
+  final SmartSelectChoiceGroupHeaderBuilder? groupHeaderBuilder;
 
   /// Builder for custom empty display
-  final SmartSelectChoiceEmptyBuilder emptyBuilder;
+  final SmartSelectChoiceEmptyBuilder? emptyBuilder;
 
   /// Create choices configuration
   const SmartSelectChoiceConfig({

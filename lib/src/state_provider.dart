@@ -20,14 +20,14 @@ class StateProvider<T> extends InheritedWidget {
   final T state;
 
   StateProvider({
-    Key key,
-    @required this.state,
-    @required Widget child
+    Key? key,
+    required this.state,
+    required Widget child
   }) : assert(child != null),
     super(key: key, child: child);
 
   static T of<T>(BuildContext context) {
-    return context.dependOnInheritedWidgetOfExactType<StateProvider<T>>().state;
+    return context.dependOnInheritedWidgetOfExactType<StateProvider<T>>()!.state;
   }
 
   @override
@@ -36,12 +36,12 @@ class StateProvider<T> extends InheritedWidget {
 
 class StateConsumer<T> extends StatelessWidget {
 
-  final Widget Function(BuildContext context, T state, Widget child) builder;
-  final Widget child;
+  final Widget Function(BuildContext context, T state, Widget? child) builder;
+  final Widget? child;
 
   StateConsumer({
-    Key key,
-    @required this.builder,
+    Key? key,
+    required this.builder,
     this.child,
   }) : assert(builder != null),
     super(key: key);

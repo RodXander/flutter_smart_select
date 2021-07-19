@@ -11,11 +11,11 @@ class SmartSelectModal extends StatelessWidget {
   final Widget choices;
 
   SmartSelectModal({
-    Key key,
-    @required this.title,
-    @required this.type,
-    @required this.config,
-    @required this.choices,
+    Key? key,
+    required this.title,
+    required this.type,
+    required this.config,
+    required this.choices,
   }) : super(key: key);
 
   @override
@@ -23,7 +23,7 @@ class SmartSelectModal extends StatelessWidget {
     if (type == SmartSelectModalType.fullPage) {
       return Scaffold(
         backgroundColor: config.style.backgroundColor,
-        appBar: _routeHeader,
+        appBar: _routeHeader as PreferredSizeWidget?,
         body: _routeBody,
       );
     } else {
@@ -35,7 +35,7 @@ class SmartSelectModal extends StatelessWidget {
     return type == SmartSelectModalType.fullPage;
   }
 
-  Widget get _routeHeader {
+  Widget? get _routeHeader {
     return config.useHeader
       ? SmartSelectModalHeader(
           title: config?.title ?? title,
@@ -50,7 +50,7 @@ class SmartSelectModal extends StatelessWidget {
       child: Column(
         mainAxisSize: MainAxisSize.min,
         mainAxisAlignment: MainAxisAlignment.start,
-        children: <Widget>[
+        children: <Widget?>[
           _isFullPage != true ? _routeHeader : null,
           config.leading,
           Flexible(
@@ -58,7 +58,7 @@ class SmartSelectModal extends StatelessWidget {
             child: choices,
           ),
           config.trailing,
-        ].where((child) => child != null).toList(),
+        ].where((child) => child != null).toList() as List<Widget>,
       ),
     );
   }

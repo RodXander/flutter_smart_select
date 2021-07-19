@@ -5,13 +5,14 @@ homepage: https://github.com/davigmacode/flutter_smart_select
 version: 3.0.3
 
 environment:
-  sdk: ">=2.1.0 <3.0.0"
+  sdk: '>=2.12.0 <3.0.0'
 
 dependencies:
   flutter:
     sdk: flutter
-  provider: ">=4.0.0 <5.0.0"
-  sticky_headers: ">=0.1.8+1 <1.0.0"
+  provider: ^5.0.0
+  sticky_headers: ^0.2.0
+  collection: ^1.15.0-nullsafety.4
 
 dev_dependencies:
   flutter_test:

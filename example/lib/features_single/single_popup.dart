@@ -33,9 +33,9 @@ class _FeaturesSinglePopupState extends State<FeaturesSinglePopup> {
           modalType: SmartSelectModalType.popupDialog,
           builder: (context, state, showOption) {
             return ListTile(
-              title: Text(state.title),
+              title: Text(state.title!),
               subtitle: Text(
-                state.valueDisplay,
+                state.valueDisplay!,
                 style: TextStyle(color: Colors.grey),
                 overflow: TextOverflow.ellipsis,
                 maxLines: 1,
@@ -43,7 +43,7 @@ class _FeaturesSinglePopupState extends State<FeaturesSinglePopup> {
               leading: CircleAvatar(
                 backgroundColor: Colors.blue,
                 child: Text(
-                  '${state.valueDisplay[0]}',
+                  '${state.valueDisplay![0]}',
                   style: TextStyle(color: Colors.white)
                 ),
               ),

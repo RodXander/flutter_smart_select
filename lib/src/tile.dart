@@ -12,7 +12,7 @@ class SmartSelectTile extends StatelessWidget {
   /// A widget to display before the title.
   ///
   /// Typically an [Icon] or a [CircleAvatar] widget.
-  final Widget leading;
+  final Widget? leading;
 
   /// A widget to display after the title.
   ///
@@ -23,7 +23,7 @@ class SmartSelectTile extends StatelessWidget {
   /// [MainAxisAlign.baseline] alignment whose first item is [Expanded] and
   /// whose second child is the metadata text, instead of using the [trailing]
   /// property.
-  final Widget trailing;
+  final Widget? trailing;
 
   /// Whether this list tile is intended to display loading stats.
   final bool isLoading;
@@ -60,18 +60,18 @@ class SmartSelectTile extends StatelessWidget {
   /// and [trailing] widgets.
   ///
   /// If null, `EdgeInsets.symmetric(horizontal: 16.0)` is used.
-  final EdgeInsetsGeometry padding;
+  final EdgeInsetsGeometry? padding;
 
   /// Called when the user taps this list tile.
   ///
   /// Inoperative if [enabled] is false.
-  final GestureTapCallback onTap;
+  final GestureTapCallback? onTap;
 
   /// Create a default trigger widget
   SmartSelectTile({
-    Key key,
-    this.value,
-    this.title,
+    Key? key,
+    required this.value,
+    required this.title,
     this.leading,
     this.trailing,
     this.loadingText = 'Loading..',
@@ -99,7 +99,7 @@ class SmartSelectTile extends StatelessWidget {
     );
   }
 
-  Widget get _trailingWidget {
+  Widget? get _trailingWidget {
     return isTwoLine != true
         ? Container(
             child: Row(
@@ -119,7 +119,7 @@ class SmartSelectTile extends StatelessWidget {
         : _trailingIconWidget;
   }
 
-  Widget get _trailingIconWidget {
+  Widget? get _trailingIconWidget {
     return isLoading != true
         ? trailing != null
             ? trailing

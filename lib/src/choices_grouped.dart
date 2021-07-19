@@ -17,7 +17,7 @@ class SmartSelectChoicesGrouped<T> extends StatelessWidget {
     this.items,
     this.type,
     this.config,
-    { Key key }
+    { Key? key }
   ) : super(key: key);
 
   @override
@@ -49,14 +49,14 @@ class SmartSelectChoicesGrouped<T> extends StatelessWidget {
 class SmartSelectChoicesGroupedHeader extends StatelessWidget {
 
   final String title;
-  final int counter;
+  final int? counter;
   final SmartSelectChoiceGroupHeaderStyle theme;
 
   SmartSelectChoicesGroupedHeader({
-    Key key,
-    this.title,
+    Key? key,
+    required this.title,
     this.counter,
-    this.theme,
+    required this.theme,
   }) : super(key: key);
 
   @override
@@ -73,14 +73,14 @@ class SmartSelectChoicesGroupedHeader extends StatelessWidget {
             title,
             style: Theme.of(context)
                 .textTheme
-                .body2
+                .body2!
                 .merge(theme.textStyle),
           ),
           Text(
             counter.toString(),
             style: Theme.of(context)
                 .textTheme
-                .body2
+                .body2!
                 .merge(theme.textStyle),
           ),
         ],

@@ -8,13 +8,13 @@ abstract class SmartSelectOptionList {
 
   static List<SmartSelectOption<R>> generate<T, R>(
     List<T> items, {
-    @required SmartSelectOptionProp<T, R> value,
-    @required SmartSelectOptionProp<T, String> title,
-    SmartSelectOptionProp<T, String> subtitle,
-    SmartSelectOptionProp<T, String> group,
-    SmartSelectOptionProp<T, bool> disabled,
-    SmartSelectOptionProp<T, bool> hidden,
-    SmartSelectOptionProp<T, dynamic> meta,
+    required SmartSelectOptionProp<T, R> value,
+    required SmartSelectOptionProp<T, String> title,
+    SmartSelectOptionProp<T, String>? subtitle,
+    SmartSelectOptionProp<T, String>? group,
+    SmartSelectOptionProp<T, bool>? disabled,
+    SmartSelectOptionProp<T, bool>? hidden,
+    SmartSelectOptionProp<T, dynamic>? meta,
   }) => items
       .asMap()
       .map((index, item) => MapEntry(index, SmartSelectOption<R>(

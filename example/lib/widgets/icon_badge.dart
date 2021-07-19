@@ -7,8 +7,8 @@ class IconBadge extends StatelessWidget {
   final Color color;
 
   IconBadge({
-    Key key,
-    @required this.icon,
+    Key? key,
+    required this.icon,
     this.counter = 0,
     this.color = Colors.red,
   }) : super(key: key);

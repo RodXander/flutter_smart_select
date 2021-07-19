@@ -4,11 +4,11 @@ class SmartSelectStateSelected<T> extends ChangeNotifier {
 
   final bool isMultiChoice;
 
-  final bool useConfirmation;
+  final bool? useConfirmation;
 
-  T _value;
+  T? _value;
 
-  List<T> _values;
+  List<T>? _values;
 
   // SmartSelectStateSelected(
   //   this._value, {
@@ -28,8 +28,8 @@ class SmartSelectStateSelected<T> extends ChangeNotifier {
     }
   ) : this.isMultiChoice = true;
 
-  T get value => _value;
-  List<T> get values => _values;
+  T? get value => _value;
+  List<T>? get values => _values;
 
   bool contains(T val) {
     return isMultiChoice == true
@@ -37,7 +37,7 @@ class SmartSelectStateSelected<T> extends ChangeNotifier {
       : _value == val;
   }
 
-  void select(T val, [bool isSelected = true, Function callback]) {
+  void select(T val, [bool isSelected = true, Function? callback]) {
     if (isMultiChoice == true) {
       selectMultiple(val, isSelected);
     } else {
@@ -54,9 +54,9 @@ class SmartSelectStateSelected<T> extends ChangeNotifier {
 
   void selectMultiple(T val, [bool isSelected = true]) {
     if (isSelected) {
-      _values.add(val);
+      _values!.add(val);
     } else {
-      _values.remove(val);
+      _values!.remove(val);
     }
     notifyListeners();
   }

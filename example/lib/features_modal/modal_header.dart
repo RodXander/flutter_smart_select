@@ -49,7 +49,7 @@ class _FeaturesModalHeaderState extends State<FeaturesModalHeader> {
           modalType: SmartSelectModalType.popupDialog,
           modalConfig: SmartSelectModalConfig(
             headerStyle: SmartSelectModalHeaderStyle(
-              backgroundColor: Colors.blueGrey[50],
+              backgroundColor: Colors.blueGrey[50]!,
               centerTitle: true,
               elevation: 0,
             ),

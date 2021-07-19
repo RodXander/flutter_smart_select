@@ -9,13 +9,13 @@ class FeaturesOptionAsync extends StatefulWidget {
 
 class _FeaturesOptionAsyncState extends State<FeaturesOptionAsync> {
 
-  String _user;
+  late String _user;
   List<SmartSelectOption<String>> _users = [];
-  bool _usersIsLoading;
+  late bool _usersIsLoading;
 
-  List<String> _country;
+  late List<String> _country;
   List<SmartSelectOption<String>> _countries = [];
-  bool _countriesIsLoading;
+  late bool _countriesIsLoading;
 
   @override
   Widget build(BuildContext context) {
@@ -36,14 +36,14 @@ class _FeaturesOptionAsyncState extends State<FeaturesOptionAsync> {
           ),
           builder: (context, state, showChoices) {
             return SmartSelectTile(
-              title: state.title,
-              value: state.valueDisplay,
+              title: state.title!,
+              value: state.valueDisplay!,
               isTwoLine: true,
               isLoading: _usersIsLoading,
               leading: Builder(
                 builder: (context) {
                   String avatarUrl = state.valueObject != null
-                    ? state.valueObject.meta['picture']['thumbnail']
+                    ? state.valueObject!.meta['picture']['thumbnail']
                     : 'https://source.unsplash.com/8I-ht65iRww/100x100';
                   return CircleAvatar(
                     backgroundImage: NetworkImage(avatarUrl),
@@ -98,7 +98,7 @@ class _FeaturesOptionAsyncState extends State<FeaturesOptionAsync> {
         group: (index, item) => item['gender'],
         meta: (index, item) => item,
       );
-      setState(() => _users = options);
+      setState(() => _users = options as List<SmartSelectOption<String>>);
     } catch (e) {
       print(e);
     } finally {

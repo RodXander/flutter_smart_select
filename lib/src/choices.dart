@@ -10,14 +10,14 @@ class SmartSelectChoices<T> extends StatelessWidget {
   final List<SmartSelectOption<T>> items;
   final SmartSelectChoiceType type;
   final SmartSelectChoiceConfig<T> config;
-  final String query;
+  final String? query;
 
   SmartSelectChoices({
-    Key key,
-    @required this.items,
-    @required this.type,
-    @required this.config,
-    @required this.query,
+    Key? key,
+    required this.items,
+    required this.type,
+    required this.config,
+    required this.query,
   }) : super(key: key);
 
   @override

@@ -28,28 +28,28 @@ class SmartSelectChoiceGroupHeaderStyle {
 class SmartSelectChoiceStyle {
 
   /// Checkbox Checked icon color
-  final Color checkColor;
+  final Color? checkColor;
 
   /// Checkbox or radio active color
-  final Color activeColor;
+  final Color? activeColor;
 
   /// Inactive checkbox or radio color
-  final Color inactiveColor;
+  final Color? inactiveColor;
 
   /// Switch active thumb image
-  final ImageProvider activeThumbImage;
+  final ImageProvider? activeThumbImage;
 
   /// Switch active track color
-  final Color activeTrackColor;
+  final Color? activeTrackColor;
 
   /// Switch inactive thumb color
-  final Color inactiveThumbColor;
+  final Color? inactiveThumbColor;
 
   /// Switch inactive thumb image
-  final ImageProvider inactiveThumbImage;
+  final ImageProvider? inactiveThumbImage;
 
   /// Switch inactive track color
-  final Color inactiveTrackColor;
+  final Color? inactiveTrackColor;
 
   /// choices item title style
   final TextStyle titleStyle;
@@ -58,13 +58,13 @@ class SmartSelectChoiceStyle {
   final TextStyle subtitleStyle;
 
   /// Active choices item title style
-  final TextStyle activeTitleStyle;
+  final TextStyle? activeTitleStyle;
 
   /// Active choices item subtitle style
-  final TextStyle activeSubtitleStyle;
+  final TextStyle? activeSubtitleStyle;
 
   /// Choices item padding
-  final EdgeInsetsGeometry padding;
+  final EdgeInsetsGeometry? padding;
 
   /// Create a configuration of choices item style
   const SmartSelectChoiceStyle({

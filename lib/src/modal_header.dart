@@ -11,10 +11,10 @@ class SmartSelectModalHeader extends StatelessWidget implements PreferredSizeWid
   final SmartSelectModalConfig config;
 
   SmartSelectModalHeader({
-    Key key,
-    @required this.title,
-    @required this.type,
-    @required this.config,
+    Key? key,
+    required this.title,
+    required this.type,
+    required this.config,
   }) : super(key: key);
 
   @override
@@ -26,7 +26,7 @@ class SmartSelectModalHeader extends StatelessWidget implements PreferredSizeWid
     String modalTitle = config.title ?? title;
 
     // define text style
-    TextStyle textStyle = Theme.of(context).textTheme.title.merge(theme.textStyle);
+    TextStyle textStyle = Theme.of(context).textTheme.title!.merge(theme.textStyle);
 
     // build title widget
     Widget titleWidget = Text(modalTitle, style: textStyle);
@@ -43,16 +43,16 @@ class SmartSelectModalHeader extends StatelessWidget implements PreferredSizeWid
       onSubmitted: filter.setQuery,
     );
 
-    Widget confirmButton = config.useConfirmation && !isFiltering
+    Widget? confirmButton = config.useConfirmation && !isFiltering
       ? config.confirmationBuilder != null
-        ? config.confirmationBuilder(context, () => Navigator.pop(context, true))
+        ? config.confirmationBuilder!(context, () => Navigator.pop(context, true))
         : IconButton(
             icon: Icon(Icons.check_circle_outline),
             onPressed: () => Navigator.pop(context, true),
           )
       : null;
 
-    Widget filterButton = config.useFilter && !isFiltering
+    Widget? filterButton = config.useFilter && !isFiltering
       ? IconButton(
           icon: Icon(Icons.search),
           onPressed: () {
@@ -60,14 +60,14 @@ class SmartSelectModalHeader extends StatelessWidget implements PreferredSizeWid
             // and when physical back button pressed
             // will close the searchbar instead of close the modal
             LocalHistoryEntry entry = LocalHistoryEntry(onRemove: filter.stop);
-            ModalRoute.of(context).addLocalHistoryEntry(entry);
+            ModalRoute.of(context)!.addLocalHistoryEntry(entry);
 
             filter.start();
           },
         )
       : null;
 
-    Widget clearButton = isFiltering == true
+    Widget? clearButton = isFiltering == true
       ? IconButton(
           icon: Icon(Icons.clear),
           onPressed: () {
@@ -87,12 +87,12 @@ class SmartSelectModalHeader extends StatelessWidget implements PreferredSizeWid
       centerTitle: theme.centerTitle,
       automaticallyImplyLeading: type == SmartSelectModalType.fullPage || isFiltering == true,
       title: isFiltering == true ? searchWidget : titleWidget,
-      actions: <Widget>[
+      actions: <Widget?>[
         filterButton,
         clearButton,
         confirmButton,
         Container(width: 5.0),
-      ].where((child) => child != null).toList(),
+      ].where((child) => child != null).toList() as List<Widget>?,
     );
   }
 

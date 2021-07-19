@@ -7,11 +7,11 @@ class SmartSelectStateFilter extends ChangeNotifier {
 
   bool _activated = false;
 
-  String _query;
+  String? _query;
 
   bool get activated => _activated;
 
-  String get query => _query;
+  String? get query => _query;
 
   @override
   void dispose() {
@@ -35,7 +35,7 @@ class SmartSelectStateFilter extends ChangeNotifier {
     setQuery(null);
   }
 
-  void setQuery(String val) {
+  void setQuery(String? val) {
     _query = val;
     notifyListeners();
   }

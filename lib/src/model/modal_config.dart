@@ -14,16 +14,16 @@ typedef Widget SmartSelectModalConfirmationBuilder(
 class SmartSelectModalConfig {
 
   /// Use different title with the trigger widget title
-  final String title;
+  final String? title;
 
   /// Custom searchbar hint
-  final String searchBarHint;
+  final String? searchBarHint;
 
   /// A widget to display before the choices.
-  final Widget leading;
+  final Widget? leading;
 
   /// A widget to display after the choices.
-  final Widget trailing;
+  final Widget? trailing;
 
   /// Whether the options list modal use header or not
   final bool useHeader;
@@ -42,7 +42,7 @@ class SmartSelectModalConfig {
   final SmartSelectModalHeaderStyle headerStyle;
 
   /// Builder for custom confirmation widget
-  final SmartSelectModalConfirmationBuilder confirmationBuilder;
+  final SmartSelectModalConfirmationBuilder? confirmationBuilder;
 
   /// Create modal configuration
   const SmartSelectModalConfig({

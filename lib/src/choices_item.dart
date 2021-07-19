@@ -16,7 +16,7 @@ class ChoicesItem<T> extends StatelessWidget {
     this.data,
     this.type,
     this.config,
-    { Key key }
+    { Key? key }
   ) : super(key: key);
 
   @override
@@ -27,7 +27,7 @@ class ChoicesItem<T> extends StatelessWidget {
     // build title widget
     final Widget title = data.title != null
       ? config.titleBuilder != null
-        ? config.titleBuilder(context, data)
+        ? config.titleBuilder!(context, data)
         : Text(
             data.title,
             style: config.style.titleStyle,
@@ -35,37 +35,37 @@ class ChoicesItem<T> extends StatelessWidget {
       : null;
 
     // build subtitle widget
-    final Widget subtitle = data.subtitle != null
+    final Widget? subtitle = data.subtitle != null
       ? config.subtitleBuilder != null
-        ? config.subtitleBuilder(context, data)
+        ? config.subtitleBuilder!(context, data)
         : Text(
-            data.subtitle,
+            data.subtitle!,
             style: config.style.subtitleStyle,
           )
       : null;
 
     // build secondary/avatar widget
-    final Widget secondary = config.secondaryBuilder?.call(context, data);
+    final Widget? secondary = config.secondaryBuilder?.call(context, data);
 
     // return widget
-    return Consumer<SmartSelectStateSelected<T>>(
+    return Consumer<SmartSelectStateSelected<T?>>(
       builder: (context, state, _) {
         final bool isSelected = state.contains(data.value);
 
         // build onSelect callback if option enabled
-        final SmartSelectChoiceOnSelect<T> onSelect = data.disabled == true
+        final SmartSelectChoiceOnSelect<T?>? onSelect = data.disabled == true
           ? null
-          : (T value, [bool checked = true]) {
+          : (T? value, [bool checked = true]) {
               state.select(value, checked, () {
                 if (state.isMultiChoice != true) {
                   // Pop filtering status
                   bool isFiltering = Provider.of<SmartSelectStateFilter>(context, listen: false).activated;
                   if (isFiltering) Navigator.pop(context);
                   // Pop navigator with confirmed return value
-                  if (!state.useConfirmation) Navigator.pop(context, true);
+                  if (!state.useConfirmation!) Navigator.pop(context, true);
                 }
               });
-            };
+            } as void Function(T?, bool?)?;
 
         // when null, get the default choice type
         SmartSelectChoiceType choiceType = type == null
@@ -74,7 +74,7 @@ class ChoicesItem<T> extends StatelessWidget {
             : SmartSelectChoiceType.radios
           : type;
 
-        Widget choiceWidget;
+        late Widget choiceWidget;
 
         if (config.builder == null) {
           if (state.isMultiChoice == true) {
@@ -132,7 +132,7 @@ class ChoicesItem<T> extends StatelessWidget {
                 subtitle: subtitle,
                 secondary: secondary,
                 activeColor: style.activeColor ?? Colors.black54,
-                onChanged: onSelect != null ? (val) => onSelect(val, true) : null,
+                onChanged: onSelect != null ? (dynamic val) => onSelect(val, true) : null,
                 groupValue: state.value,
                 value: data.value,
               );
@@ -155,7 +155,7 @@ class ChoicesItem<T> extends StatelessWidget {
             }
           }
         } else {
-          choiceWidget = config.builder(data, isSelected, onSelect);
+          choiceWidget = config.builder!(data, isSelected, onSelect);
         }
 
         return choiceWidget;

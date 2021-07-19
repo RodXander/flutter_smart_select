@@ -38,9 +38,9 @@ class _FeaturesMultiPopupState extends State<FeaturesMultiPopup> {
           modalType: SmartSelectModalType.popupDialog,
           builder: (context, state, showOptions) {
             return ListTile(
-              title: Text(state.title),
+              title: Text(state.title!),
               subtitle: Text(
-                state.valueDisplay,
+                state.valueDisplay!,
                 style: TextStyle(color: Colors.grey),
                 overflow: TextOverflow.ellipsis,
                 maxLines: 1,

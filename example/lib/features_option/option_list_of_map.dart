@@ -35,8 +35,8 @@ class _FeaturesOptionListOfMapState extends State<FeaturesOptionListOfMap> {
           ),
           options: SmartSelectOption.listFrom<String, Map<String, String>>(
             source: _days,
-            value: (index, item) => item['value'],
-            title: (index, item) => item['title'],
+            value: (index, item) => item['value']!,
+            title: (index, item) => item['title']!,
           ),
           choiceType: SmartSelectChoiceType.switches,
           modalType: SmartSelectModalType.bottomSheet,

@@ -66,7 +66,7 @@ class _FeaturesChoicesThemeState extends State<FeaturesChoicesTheme> {
               endIndent: 0.0,
             ),
             groupHeaderStyle: SmartSelectChoiceGroupHeaderStyle(
-              backgroundColor: Colors.blueGrey[600],
+              backgroundColor: Colors.blueGrey[600]!,
               textStyle: TextStyle(color: Colors.white)
             )
           ),

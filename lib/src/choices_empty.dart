@@ -14,7 +14,7 @@ class SmartSelectChoicesEmpty extends StatelessWidget {
               'Whoops, no matches',
               style: Theme.of(context)
                   .textTheme
-                  .headline!
+                  .headline5!
                   .merge(TextStyle(color: Colors.black54)),
             ),
             Container(height: 7),
@@ -22,7 +22,7 @@ class SmartSelectChoicesEmpty extends StatelessWidget {
               "We couldn't find any search result",
               style: Theme.of(context)
                   .textTheme
-                  .subhead!
+                  .subtitle1!
                   .merge(TextStyle(color: Colors.black45)),
             ),
             Container(height: 7),
@@ -30,7 +30,7 @@ class SmartSelectChoicesEmpty extends StatelessWidget {
               "Give it another go",
               style: Theme.of(context)
                   .textTheme
-                  .subhead!
+                  .subtitle1!
                   .merge(TextStyle(color: Colors.black45)),
             )
           ],

@@ -1,5 +1,3 @@
-import 'package:flutter/foundation.dart';
-
 /// Choice option configuration
 class SmartSelectOption<T> {
 
@@ -7,7 +5,7 @@ class SmartSelectOption<T> {
   final T value;
 
   /// Represent as primary text
-  final String title;
+  final String? title;
 
   /// Represent as secondary text
   final String? subtitle;
@@ -48,8 +46,8 @@ class SmartSelectOption<T> {
   }) => source
       .asMap()
       .map((index, item) => MapEntry(index, SmartSelectOption<R>(
-        value: value?.call(index, item),
-        title: title?.call(index, item),
+        value: value.call(index, item),
+        title: title.call(index, item),
         subtitle: subtitle?.call(index, item),
         group: group?.call(index, item),
         disabled: disabled?.call(index, item),

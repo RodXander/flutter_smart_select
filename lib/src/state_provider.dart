@@ -23,8 +23,7 @@ class StateProvider<T> extends InheritedWidget {
     Key? key,
     required this.state,
     required Widget child
-  }) : assert(child != null),
-    super(key: key, child: child);
+  }) : super(key: key, child: child);
 
   static T of<T>(BuildContext context) {
     return context.dependOnInheritedWidgetOfExactType<StateProvider<T>>()!.state;
@@ -43,8 +42,7 @@ class StateConsumer<T> extends StatelessWidget {
     Key? key,
     required this.builder,
     this.child,
-  }) : assert(builder != null),
-    super(key: key);
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

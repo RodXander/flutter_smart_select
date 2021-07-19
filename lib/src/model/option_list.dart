@@ -1,4 +1,3 @@
-import 'package:flutter/foundation.dart';
 import 'option.dart';
 
 typedef SmartSelectOption SmartSelectOptionBuilder<T>(int index, T item);
@@ -18,8 +17,8 @@ abstract class SmartSelectOptionList {
   }) => items
       .asMap()
       .map((index, item) => MapEntry(index, SmartSelectOption<R>(
-        value: value?.call(index, item),
-        title: title?.call(index, item),
+        value: value.call(index, item),
+        title: title.call(index, item),
         subtitle: subtitle?.call(index, item),
         group: group?.call(index, item),
         disabled: disabled?.call(index, item),

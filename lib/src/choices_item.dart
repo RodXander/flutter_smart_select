@@ -9,7 +9,7 @@ import './model/choice_config.dart';
 class ChoicesItem<T> extends StatelessWidget {
 
   final SmartSelectOption<T> data;
-  final SmartSelectChoiceType type;
+  final SmartSelectChoiceType? type;
   final SmartSelectChoiceConfig<T> config;
 
   ChoicesItem(
@@ -29,10 +29,10 @@ class ChoicesItem<T> extends StatelessWidget {
       ? config.titleBuilder != null
         ? config.titleBuilder!(context, data)
         : Text(
-            data.title,
+            data.title!,
             style: config.style.titleStyle,
           )
-      : null;
+      : Container();
 
     // build subtitle widget
     final Widget? subtitle = data.subtitle != null
@@ -48,14 +48,14 @@ class ChoicesItem<T> extends StatelessWidget {
     final Widget? secondary = config.secondaryBuilder?.call(context, data);
 
     // return widget
-    return Consumer<SmartSelectStateSelected<T?>>(
+    return Consumer<SmartSelectStateSelected<T>>(
       builder: (context, state, _) {
         final bool isSelected = state.contains(data.value);
 
         // build onSelect callback if option enabled
-        final SmartSelectChoiceOnSelect<T?>? onSelect = data.disabled == true
+        final SmartSelectChoiceOnSelect<T>? onSelect = data.disabled == true
           ? null
-          : (T? value, [bool checked = true]) {
+          : (T value, [bool checked = true]) {
               state.select(value, checked, () {
                 if (state.isMultiChoice != true) {
                   // Pop filtering status
@@ -65,14 +65,14 @@ class ChoicesItem<T> extends StatelessWidget {
                   if (!state.useConfirmation!) Navigator.pop(context, true);
                 }
               });
-            } as void Function(T?, bool?)?;
+            };
 
         // when null, get the default choice type
         SmartSelectChoiceType choiceType = type == null
           ? state.isMultiChoice
             ? SmartSelectChoiceType.checkboxes
             : SmartSelectChoiceType.radios
-          : type;
+          : type!;
 
         late Widget choiceWidget;
 
@@ -86,7 +86,7 @@ class ChoicesItem<T> extends StatelessWidget {
                 checkColor: style.checkColor ?? Colors.white,
                 activeColor: style.activeColor ?? Colors.black54,
                 onChanged: onSelect != null
-                  ? (selected) => onSelect(data.value, selected)
+                  ? (selected) => onSelect(data.value, selected ?? false)
                   : null,
                 value: isSelected,
               );

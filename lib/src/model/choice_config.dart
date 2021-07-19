@@ -54,7 +54,7 @@ typedef Widget SmartSelectChoiceBuilder<T>(
 /// Callback to handle change of each custom choices item
 typedef void SmartSelectChoiceOnSelect<T>(
   T value,
-  bool? checked
+  bool checked
 );
 
 /// Choices configuration

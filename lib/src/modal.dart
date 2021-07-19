@@ -1,7 +1,9 @@
-import 'package:flutter/widgets.dart';
+import 'package:collection/collection.dart';
 import 'package:flutter/material.dart' show Scaffold;
-import './model/modal_config.dart';
+import 'package:flutter/widgets.dart';
+
 import './modal_header.dart';
+import './model/modal_config.dart';
 
 class SmartSelectModal extends StatelessWidget {
 
@@ -38,7 +40,7 @@ class SmartSelectModal extends StatelessWidget {
   Widget? get _routeHeader {
     return config.useHeader
       ? SmartSelectModalHeader(
-          title: config?.title ?? title,
+          title: config.title ?? title,
           type: type,
           config: config,
         )
@@ -50,7 +52,7 @@ class SmartSelectModal extends StatelessWidget {
       child: Column(
         mainAxisSize: MainAxisSize.min,
         mainAxisAlignment: MainAxisAlignment.start,
-        children: <Widget?>[
+        children: [
           _isFullPage != true ? _routeHeader : null,
           config.leading,
           Flexible(
@@ -58,7 +60,7 @@ class SmartSelectModal extends StatelessWidget {
             child: choices,
           ),
           config.trailing,
-        ].where((child) => child != null).toList() as List<Widget>,
+        ].whereNotNull().toList(),
       ),
     );
   }

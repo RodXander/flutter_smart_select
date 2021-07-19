@@ -9,11 +9,11 @@ class FeaturesOptionAsync extends StatefulWidget {
 
 class _FeaturesOptionAsyncState extends State<FeaturesOptionAsync> {
 
-  late String _user;
+  String? _user;
   List<SmartSelectOption<String>> _users = [];
   late bool _usersIsLoading;
 
-  late List<String> _country;
+  List<String>? _country;
   List<SmartSelectOption<String>> _countries = [];
   late bool _countriesIsLoading;
 
@@ -24,7 +24,7 @@ class _FeaturesOptionAsyncState extends State<FeaturesOptionAsync> {
         Container(height: 7),
         SmartSelect<String>.single(
           title: 'Admin',
-          value: _user,
+          value: _user ?? '',
           options: _users,
           modalConfig: SmartSelectModalConfig(useFilter: true),
           choiceType: SmartSelectChoiceType.chips,
@@ -58,7 +58,7 @@ class _FeaturesOptionAsyncState extends State<FeaturesOptionAsync> {
         Divider(indent: 20),
         SmartSelect<String>.multiple(
           title: 'Country',
-          value: _country,
+          value: _country ?? [],
           isTwoLine: true,
           isLoading: _countriesIsLoading,
           options: _countries,

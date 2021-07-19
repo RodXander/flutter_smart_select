@@ -60,8 +60,8 @@ class SmartSelectState<T> {
 
   /// return a string or array of string
   /// that represent the value
-  List<String>? get valuesTitle {
-    return valuesObject != null && valuesObject.length > 0
+  List<String?>? get valuesTitle {
+    return valuesObject.length > 0
       ? valuesObject.map((SmartSelectOption<T> item) => item.title).toList()
       : null;
   }

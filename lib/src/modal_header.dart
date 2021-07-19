@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 import './model/state_filter.dart';
 import './model/modal_theme.dart';
 import './model/modal_config.dart';
+import 'package:collection/collection.dart';
 
 class SmartSelectModalHeader extends StatelessWidget implements PreferredSizeWidget {
 
@@ -26,7 +27,7 @@ class SmartSelectModalHeader extends StatelessWidget implements PreferredSizeWid
     String modalTitle = config.title ?? title;
 
     // define text style
-    TextStyle textStyle = Theme.of(context).textTheme.title!.merge(theme.textStyle);
+    TextStyle textStyle = Theme.of(context).textTheme.headline6!.merge(theme.textStyle);
 
     // build title widget
     Widget titleWidget = Text(modalTitle, style: textStyle);
@@ -87,12 +88,12 @@ class SmartSelectModalHeader extends StatelessWidget implements PreferredSizeWid
       centerTitle: theme.centerTitle,
       automaticallyImplyLeading: type == SmartSelectModalType.fullPage || isFiltering == true,
       title: isFiltering == true ? searchWidget : titleWidget,
-      actions: <Widget?>[
+      actions: [
         filterButton,
         clearButton,
         confirmButton,
         Container(width: 5.0),
-      ].where((child) => child != null).toList() as List<Widget>?,
+      ].whereNotNull().toList(),
     );
   }
 

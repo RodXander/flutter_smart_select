@@ -73,14 +73,14 @@ class SmartSelectChoicesGroupedHeader extends StatelessWidget {
             title,
             style: Theme.of(context)
                 .textTheme
-                .body2!
+                .bodyText1!
                 .merge(theme.textStyle),
           ),
           Text(
             counter.toString(),
             style: Theme.of(context)
                 .textTheme
-                .body2!
+                .bodyText1!
                 .merge(theme.textStyle),
           ),
         ],

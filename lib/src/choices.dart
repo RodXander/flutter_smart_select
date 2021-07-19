@@ -74,6 +74,6 @@ class SmartSelectChoices<T> extends StatelessWidget {
   }
 
   bool get _isGrouped {
-    return config.isGrouped && _groupKeys != null && _groupKeys.isNotEmpty;
+    return config.isGrouped && _groupKeys.isNotEmpty;
   }
 }

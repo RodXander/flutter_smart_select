@@ -190,7 +190,7 @@ class SmartSelect<T> extends StatelessWidget {
     _onChangeSingle = null,
     _onChangeMultiple = onChange,
     _state = SmartSelectState<T>.multiple(
-      value ?? [],
+      value,
       title: title,
       options: options,
       placeholder: placeholder,
@@ -253,7 +253,7 @@ class SmartSelect<T> extends StatelessWidget {
         ChangeNotifierProvider<SmartSelectStateSelected<T>>(
           create: (_) => isMultiChoice == true
             ? SmartSelectStateSelected<T>.multiple(
-                List.from(_state.values!) ?? [],
+                List.from(_state.values!),
                 useConfirmation: modalConfig.useConfirmation
               )
             : SmartSelectStateSelected<T>.single(
@@ -292,7 +292,7 @@ class SmartSelect<T> extends StatelessWidget {
         confirmed = await (Navigator.push(
           context,
           MaterialPageRoute(builder: (_) => _routeWidget),
-        ) as FutureOr<bool>);
+        ));
         break;
       case SmartSelectModalType.bottomSheet:
         confirmed = await (showModalBottomSheet(
@@ -301,7 +301,7 @@ class SmartSelect<T> extends StatelessWidget {
           backgroundColor: modalConfig.style.backgroundColor,
           elevation: modalConfig.style.elevation,
           builder: (_) => _routeWidget,
-        ) as FutureOr<bool>);
+        ));
         break;
       case SmartSelectModalType.popupDialog:
         confirmed = await (showDialog(
@@ -312,7 +312,7 @@ class SmartSelect<T> extends StatelessWidget {
             elevation: modalConfig.style.elevation,
             child: _routeWidget,
           ),
-        ) as FutureOr<bool>);
+        ));
         break;
     }
 

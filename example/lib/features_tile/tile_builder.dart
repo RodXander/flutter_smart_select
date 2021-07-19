@@ -141,7 +141,7 @@ class ChipsTile<T> extends StatelessWidget {
   }
 
   Widget get _chips {
-    return state!.valuesObject?.isNotEmpty ?? false
+    return state!.valuesObject.isNotEmpty
       ? Padding(
           padding: EdgeInsets.symmetric(
             horizontal: 10,
@@ -155,7 +155,7 @@ class ChipsTile<T> extends StatelessWidget {
             children: List<Widget>.generate(
               state!.valuesObject.length,
               (i) => Chip(
-                label: Text(state!.valuesObject[i].title),
+                label: Text(state!.valuesObject[i].title ?? 'No label'),
                 backgroundColor: Colors.white,
                 shape: StadiumBorder(
                   side: BorderSide(

@@ -81,7 +81,6 @@ class SmartSelectModalHeader extends StatelessWidget implements PreferredSizeWid
     return AppBar(
       shape: theme.shape,
       elevation: theme.elevation,
-      brightness: theme.brightness,
       backgroundColor: theme.backgroundColor,
       actionsIconTheme: theme.actionsIconTheme,
       iconTheme: theme.iconTheme,

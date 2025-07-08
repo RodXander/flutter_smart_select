@@ -27,7 +27,7 @@ class SmartSelectModalHeader extends StatelessWidget implements PreferredSizeWid
     String modalTitle = config.title ?? title;
 
     // define text style
-    TextStyle textStyle = Theme.of(context).textTheme.headline6!.merge(theme.textStyle);
+    TextStyle textStyle = Theme.of(context).textTheme.titleLarge!.merge(theme.textStyle);
 
     // build title widget
     Widget titleWidget = Text(modalTitle, style: textStyle);
